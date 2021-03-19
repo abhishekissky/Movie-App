@@ -1,6 +1,7 @@
 package com.example.moviesapp.Util;
 
 import com.example.moviesapp.Model.MovieModel;
+import com.example.moviesapp.Model.ReviewJSONResponse;
 import com.example.moviesapp.Response.MovieSearchResponse;
 
 import retrofit2.Call;
@@ -29,6 +30,12 @@ public interface MovieApi {
     Call<MovieSearchResponse> GetPop(
             @Query("api_key") String API_KEY,
             @Query("page") int pageNumber
+    );
+
+    @GET("/3/movie/{movie_id}/reviews")
+    Call<ReviewJSONResponse> getReview(
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String API_Key
     );
 }
 
